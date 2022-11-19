@@ -94,9 +94,9 @@ class AuroraCli():
             tx = self.w3.toHex(tx).replace('0x', '', 1)
             n_t = current_timestamp()
             status = self.w3.eth.waitForTransactionReceipt(tx).status
-            current_app.logger.debug("Aurora等待上链耗时: {t}".format(t=current_timestamp() - n_t))
+            current_app.logger.debug("Aurora wait: {t}".format(t=current_timestamp() - n_t))
             if not status:
-                current_app.logger.debug("交易失败: {txid}; 状态: {status}".format(txid=tx, status=status))
+                current_app.logger.debug("Transaction ID: {txid}; Status: {status}".format(txid=tx, status=status))
                 return None
 
             return tx
