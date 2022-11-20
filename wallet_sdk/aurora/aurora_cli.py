@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from web3 import Web3
-from flask import current_app
+from flask import current_app as app
 
 from app.utils.utils import quantize
 from app.utils.utils import current_timestamp
