@@ -1,10 +1,10 @@
-import re
+from robot_reg import re
 import hashlib
 
 from sqlalchemy import or_
 from sqlalchemy import and_
 
-from flask import current_app
+from flask import current_app as app
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler

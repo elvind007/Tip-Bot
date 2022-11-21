@@ -1,44 +1,45 @@
 import re
 
 def intention_dbs():
-    dbs = [
+    dbs=[
+        
         {
-            "reg": "^(介绍|开始|机器人|start)$",
+            "reg": "^(start)$",
             "key": "handle_start",
             "default": None,
             "dics": None,
         },
         # ---------------help--------------
         {
-            "reg": "^(帮助|help)$",
+            "reg": "^(help)$",
             "key": "handle_help",
             "default": None,
             "dics": None,
         },
         {
-            "reg": "^(我想|我要|怎么|如何)?(提现|提走|提币|withdraw)[ ]?([a-zA-Z0-9\-]{2,16})?$",
+            "reg": "^(how to)?(withdraw)[ ]?([a-zA-Z0-9\-]{2,16})?$",
             "key": "handle_withdraw_help",
             "default": None,
             "dics": None,
         },
         {
-            "reg": "^(充值|deposit)$",
+            "reg": "^(deposit)$",
             "key": "handle_deposit_help",
             "default": None,
             "dics": None,
         },
         {
-            "reg": "^(钱包|wallet|wallets|钱包列表)$",
+            "reg": "^(wallet|wallet list)$",
             "key": "handle_wallet_list",
             "default": None,
             "dics": None,
         },
         {
-            "reg": "^(我想|我要|怎么|帮助|help)[ ]?(报价|充值|提现|提币|打赏|红包|发红包|红包雨|口令红包|兑换|交易对|绑定|绑定手机|验证|绑定验证|手机验证|切换钱包|price|deposit|withdraw|tip|rain|password|pair|swap|bind_mobile|verify_mobile|switch_wallet)$",
+            "reg": "^(help)[ ]?(price|deposit|withdraw|tip|rain|password|pair|swap|bind_mobile|verify_mobile|switch_wallet)$",
             "key": "handle_help",
             "default": None,
             "dics": [{
-                "reg": "^(我想|我要|怎么|帮助|help)[ ]?(报价|充值|提现|提币|打赏|红包|发红包|红包雨|口令红包|兑换|交易对|绑定|绑定手机|验证|绑定验证|手机验证|切换钱包|price|deposit|withdraw|tip|rain|password|pair|swap|bind_mobile|verify_mobile|switch_wallet)$",
+                "reg": "^(help)[ ]?(price|deposit|withdraw|tip|rain|password|pair|swap|bind_mobile|verify_mobile|switch_wallet)$",
                 "is_read_keys": True,
                 "slot_keys": [
                     {"field": "fix", "default": None},
@@ -46,23 +47,6 @@ def intention_dbs():
                 ],
                 "key": "handle_help",
                 "keys": [
-                    {"name": "报价", "key": "handle_price_help"},
-                    {"name": "充值", "key": "handle_deposit_help"},
-                    {"name": "提现", "key": "handle_withdraw_help"},
-                    {"name": "提币", "key": "handle_withdraw_help"},
-                    {"name": "打赏", "key": "handle_tip_help"},
-                    {"name": "红包", "key": "handle_rain_help"},
-                    {"name": "发红包", "key": "handle_rain_help"},
-                    {"name": "红包雨", "key": "handle_rain_help"},
-                    {"name": "口令红包", "key": "handle_password_help"},
-                    {"name": "兑换", "key": "handle_swap_help"},
-                    {"name": "交易对", "key": "handle_swap_pair_help"},
-                    {"name": "绑定", "key": "handle_bind_mobile_help"},
-                    {"name": "绑定手机", "key": "handle_bind_mobile_help"},
-                    {"name": "验证", "key": "handle_verify_mobile_help"},
-                    {"name": "绑定验证", "key": "handle_verify_mobile_help"},
-                    {"name": "手机验证", "key": "handle_verify_mobile_help"},
-                    {"name": "切换钱包", "key": "handle_switch_wallet_help"},
                     {"name": "price", "key": "handle_price_help"},
                     {"name": "deposit", "key": "handle_deposit_help"},
                     {"name": "withdraw", "key": "handle_withdraw_help"},
@@ -78,11 +62,11 @@ def intention_dbs():
             }]
         },
         {
-            "reg": "^(我想|我要|怎么|帮助|help)?[ ]?(报价|充值|提现|提币|打赏|红包|口令红包|兑换|绑定|绑定手机|验证|绑定验证|手机验证|切换钱包|price|deposit|withdraw|tip|password|pair|swap|bind_mobile|verify_mobile|switch_wallet)$",
+            "reg": "^(help)?[ ]?(price|deposit|withdraw|tip|password|pair|swap|bind_mobile|verify_mobile|switch_wallet)$",
             "key": "handle_help",
             "default": None,
             "dics": [{
-                "reg": "^(我想|我要|怎么|帮助|help)?[ ]?(报价|充值|提现|提币|打赏|红包|口令红包|兑换|交易对|绑定|绑定手机|验证|绑定验证|手机验证|切换钱包|price|deposit|withdraw|tip|password|pair|swap|bind_mobile|verify_mobile|switch_wallet)$",
+                "reg": "^(help)?[ ]?(price|deposit|withdraw|tip|password|pair|swap|bind_mobile|verify_mobile|switch_wallet)$",
                 "is_read_keys": True,
                 "slot_keys": [
                     {"field": "fix", "default": None},
@@ -90,21 +74,6 @@ def intention_dbs():
                 ],
                 "key": "handle_help",
                 "keys": [
-                    {"name": "报价", "key": "handle_price_help"},
-                    {"name": "充值", "key": "handle_deposit_help"},
-                    {"name": "提现", "key": "handle_withdraw_help"},
-                    {"name": "提币", "key": "handle_withdraw_help"},
-                    {"name": "打赏", "key": "handle_tip_help"},
-                    {"name": "红包", "key": "handle_rain_help"},
-                    {"name": "口令红包", "key": "handle_password_help"},
-                    {"name": "兑换", "key": "handle_swap_help"},
-                    {"name": "交易对", "key": "handle_swap_pair_help"},
-                    {"name": "绑定", "key": "handle_bind_mobile_help"},
-                    {"name": "绑定手机", "key": "handle_bind_mobile_help"},
-                    {"name": "验证", "key": "handle_verify_mobile_help"},
-                    {"name": "绑定验证", "key": "handle_verify_mobile_help"},
-                    {"name": "手机验证", "key": "handle_verify_mobile_help"},
-                    {"name": "切换钱包", "key": "handle_switch_wallet_help"},
                     {"name": "price", "key": "handle_price_help"},
                     {"name": "deposit", "key": "handle_deposit_help"},
                     {"name": "withdraw", "key": "handle_withdraw_help"},
@@ -120,11 +89,11 @@ def intention_dbs():
         },
         # ------------balance-------------
         {
-            "reg": "^(余额|balance)[ ]?([a-zA-Z0-9\-]{2,16})?$",
+            "reg": "^(balance)[ ]?([a-zA-Z0-9\-]{2,16})?$",
             "key": "handle_balance",
             "default": None,
             "dics": [{
-                "reg": "^(余额|balance)[ ]?([a-zA-Z0-9\-]{2,16})?$",
+                "reg": "^(balance)[ ]?([a-zA-Z0-9\-]{2,16})?$",
                 "slot_keys": [
                     {"field": "fix", "default": None},
                     {"field": "coin", "default": None}
@@ -135,11 +104,11 @@ def intention_dbs():
             }],
         },
         {
-            "reg": "^(查看我的|查看|我的|查|check)*[ ]?([a-zA-Z0-9\-]{2,16})?[ ]?(余额|balance)$",
+            "reg": "^(check)*[ ]?([a-zA-Z0-9\-]{2,16})?[ ]?(balance)$",
             "key": "handle_balance",
             "default": None,
             "dics": [{
-                "reg": "^(查看我的|查看|我的|查|check)*[ ]?([a-zA-Z0-9\-]{2,16})?[ ]?(余额|balance)$",
+                "reg": "^(check)*[ ]?([a-zA-Z0-9\-]{2,16})?[ ]?(balance)$",
                 "slot_keys": [
                     {"field": "fix", "default": None},
                     {"field": "coin", "default": None},
@@ -152,11 +121,11 @@ def intention_dbs():
         },
         # ---------------deposit---------------
         {
-            "reg": "^(我要|我想)?(充值|充值|充入|地址|address|deposit)[ ]?([a-zA-Z0-9\-]{2,16})?$",
+            "reg": "^(deposit)[ ]?([a-zA-Z0-9\-]{2,16})?$",
             "key": "handle_deposit",
             "default": None,
             "dics": [{
-                "reg": "^(我要|我想)?(充值|充入|地址|address|deposit)[ ]?([a-zA-Z0-9\-]{2,16})?$",
+                "reg": "^(deposit)[ ]?([a-zA-Z0-9\-]{2,16})?$",
                 "slot_keys": [
                     {"field": "will", "default": None},
                     {"field": "fix", "default": None},
@@ -169,17 +138,17 @@ def intention_dbs():
         },
         # --------------withdraw-------------
         {
-            "reg": "^(我想|我要|怎么|如何)?(提现|提走|提币|withdraw)[ ]?",
+            "reg": "^(withdraw)[ ]?",
             "key": None,
             "default": None,
             "dics": [{
-                "reg": "^(我想|我要|怎么|如何)?(提现|提走|提币|withdraw)[ ]?([a-zA-Z0-9\-]{2,16})$",
+                "reg": "^(withdraw)[ ]?([a-zA-Z0-9\-]{2,16})$",
                 "slot_keys": [],
                 "key": "handle_withdraw_help",
                 "is_read_keys": False,
                 "keys": []
                 }, {
-                "reg": "^(我想|我要)?(提现|提走|提币|withdraw)[ ]?([+-]?\d+[\.\d]*)[ ]?([a-zA-Z0-9\-]{2,16})?[ ]+([a-zA-Z0-9:]{30,66})[ ]+([a-z0-9A-Z]{1,30})?$",
+                "reg": "^(withdraw)[ ]?([+-]?\d+[\.\d]*)[ ]?([a-zA-Z0-9\-]{2,16})?[ ]+([a-zA-Z0-9:]{30,66})[ ]+([a-z0-9A-Z]{1,30})?$",
                 "slot_keys": [
                     {"field": "will", "default": None},
                     {"field": "fix", "default": None},
@@ -193,7 +162,7 @@ def intention_dbs():
                 "keys": []
             },
             {
-                "reg": "^(我想|我要)?(提现|提走|提币|withdraw)[ ]?(\d+[\.\d]*)[ ]?([a-zA-Z0-9\-]{2,16})[ ]?[到|到地址|to]?[ ]+([a-zA-Z0-9:]{30,66})[ ]?(memo|MEMO)?[ ]?([a-z0-9A-Z]{1,30})?$",
+                "reg": "^(withdraw)[ ]?(\d+[\.\d]*)[ ]?([a-zA-Z0-9\-]{2,16})[ ]?[到|到地址|to]?[ ]+([a-zA-Z0-9:]{30,66})[ ]?(memo|MEMO)?[ ]?([a-z0-9A-Z]{1,30})?$",
                 "slot_keys": [
                     {"field": "will", "default": None},
                     {"field": "fix", "default": None},
@@ -210,12 +179,12 @@ def intention_dbs():
         },
         # --------------tip-------------
         {
-            "reg": "^(打赏|tip|\+)[ ]?[\w\W]+",
+            "reg": "^(tip|\+)[ ]?[\w\W]+",
             "key": None,
             "default": None,
             "dics": [
                 {
-                    "reg": "^(打赏|tip|\+)[ ]?([+-]?\d+[\.\d]*)?[ ]?([a-zA-Z0-9\-]{2,16})?[ ]*$",
+                    "reg": "^(tip|\+)[ ]?([+-]?\d+[\.\d]*)?[ ]?([a-zA-Z0-9\-]{2,16})?[ ]*$",
                     "slot_keys": [
                         {"field": "fix", "default": None},
                         {"field": "amount", "default": 1},
@@ -226,7 +195,7 @@ def intention_dbs():
                     "keys": []
                 },
                 {
-                    "reg": "^(打赏|tip)[ ]?[@]?((?<!\ \d)[\w\W]*?)[ ]?([+-]?\d+[\.\d]*)?[ ]?([a-zA-Z0-9\-]{2,16})?[ ]*$",
+                    "reg": "^(tip)[ ]?[@]?((?<!\ \d)[\w\W]*?)[ ]?([+-]?\d+[\.\d]*)?[ ]?([a-zA-Z0-9\-]{2,16})?[ ]*$",
                     "slot_keys": [
                         {"field": "fix", "default": None},
                         {"field": "users", "default": None},
@@ -241,11 +210,11 @@ def intention_dbs():
         },
         # --------------password-------------
         {
-            "reg": "^(口令红包|password)[\w\W]+",
+            "reg": "^(password)[\w\W]+",
             "key": None,
             "default": None,
             "dics": [{
-                "reg": "^(口令红包|password)[ ]*(\d+)?[ ]*(个|people| )?[ ]?([+-]?\d+[\.\d]*)?[ ]?([a-zA-Z0-9\-]{2,16})?[ ]?[#]([\w\W]+)$",
+                "reg": "^(password)[ ]*(\d+)?[ ]*(people| )?[ ]?([+-]?\d+[\.\d]*)?[ ]?([a-zA-Z0-9\-]{2,16})?[ ]?[#]([\w\W]+)$",
                 "slot_keys": [
                     {"field": "fix", "default": None},
                     {"field": "share", "default": None},
@@ -260,6 +229,7 @@ def intention_dbs():
             }],
         },
         # --------------normal red packets-------------
+        """
         {
             "reg": "^(红包|发红包|红包雨|红包暴雨|airdrop|rain|storm)[\w\W]*",
             "key": None,
@@ -279,6 +249,7 @@ def intention_dbs():
                 "keys": []
             }],
         },
+        
         # --------------Grab-------------
         {
             "reg": "^#[\w\W]*$",
@@ -308,7 +279,7 @@ def intention_dbs():
                 "keys": []
             }]
         },
-        # --------------coinlore-------------
+        # --------------coin lore-------------
         {
             "reg": "^[=＝]([a-zA-Z0-9\-]{2,16})$",
             "key": "handle_coin_lore",
@@ -323,13 +294,14 @@ def intention_dbs():
                 "keys": []
             }],
         },
+        """
         # --------------last: price-------------
         {
-            "reg": "^(报价|价格|price)[ ]?([a-zA-Z0-9\-]{2,16})$",
+            "reg": "^(Latest price)[ ]?([a-zA-Z0-9\-]{2,16})$",
             "key": "handle_price",
             "default": None,
             "dics": [{
-                "reg": "^(报价|价格|price)[ ]?([a-zA-Z0-9\-]{2,16})$",
+                "reg": "^(Latest price)[ ]?([a-zA-Z0-9\-]{2,16})$",
                 "slot_keys": [
                     {"field": "fix", "default": None},
                     {"field": "coin", "default": None},
@@ -359,7 +331,7 @@ def intention_dbs():
 
 def parse_msg(msg):
     '''
-    解析用户消息
+    Parse User Message
     '''
     datas = {}
     ret = {"datas": None, "key": None}
@@ -383,9 +355,9 @@ def parse_msg(msg):
             items = r.groups()
             items_len = len(items)
 
-            if not dic['slot_keys']: # 不要任何参数
+            if not dic['slot_keys']: # no parameters
                 ret["key"] = dic["key"]
-                break  # 已经匹配到
+                break  # if match, break
 
             slot_keys_len = len(dic['slot_keys'])
             if slot_keys_len != items_len:

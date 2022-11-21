@@ -1,0 +1,7 @@
+node_modules/webpack/lib/Compiler.js:548:11)
+    at /Users/username/Projects/project/node_modules/webpack/lib/Compiler.js:596:15
+    at /Users/username/Projects/project/node_modules/tapable/lib/Tapable.js:289:11
+    at _addModuleChain (/Users/username/Projects/project/node_modules/webpack/lib/Compilation.js:507:11)
+    at processModuleDependencies.err (/Users/username/Projects/project/node_modules/webpack/lib/Compilation.js:477:14)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "app-utils": "^0.1.0",
+    "web3": "^1.8.1"
+  }
+}
